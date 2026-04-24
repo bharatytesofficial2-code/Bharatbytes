@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bharat Bytes – We Build Websites That Grow Your Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --bg: #f5f2ed;
+    --accent: #ff4d1c;
+    --accent2: #1c3fff;
+    --card: #ffffff;
+    --muted: #6b6661;
+    --border: #e0dbd4;
+    --nav-h: 70px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 0.45rem 1.1rem; border-radius: 2px;
+  }
+  .nav-cta:hover { background: #d93a10; color: #fff !important; }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 100px 6vw; }
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  h1,h2,h3 { font-family: 'Syne', sans-serif; }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    padding-top: calc(var(--nav-h) + 80px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(255,77,28,0.08) 0%, transparent 70%),
+      var(--bg);
+  }
+  .hero-text {}
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--ink); color: #fff;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 2px;
+    margin-bottom: 1.8rem;
+  }
+  .hero-h1 {
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-weight: 800; line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.4rem;
+  }
+  .hero-h1 em { color: var(--accent); font-style: normal; }
+  .hero-sub {
+    font-size: 1.1rem; font-weight: 300; color: var(--muted);
+    line-height: 1.7; max-width: 440px; margin-bottom: 2.4rem;
+  }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    padding: 0.85rem 1.8rem; border-radius: 2px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: #d93a10; transform: translateY(-2px); }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #25d366; color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    padding: 0.85rem 1.8rem; border-radius: 2px;
+    text-decoration: none; transition: background .2s, transform .15s;
+  }
+  .btn-wa:hover { background: #1db954; transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1.5px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--ink);
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-top: 0.2rem; }
+  .hero-visual {
+    position: relative;
+  }
+  .hero-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .mockup-bar { display: flex; gap: 6px; margin-bottom: 1.2rem; }
+  .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .mockup-dot:nth-child(1){background:#ff5f57;}
+  .mockup-dot:nth-child(2){background:#ffbd2e;}
+  .mockup-dot:nth-child(3){background:#28c840;}
+  .mockup-browser {
+    background: var(--bg); border-radius: 4px;
+    padding: 1.2rem;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .mockup-nav-bar {
+    display: flex; gap: 0.5rem; align-items: center;
+  }
+  .mockup-nav-btn {
+    width: 28px; height: 9px; border-radius: 2px;
+    background: var(--border);
+  }
+  .mockup-url-bar {
+    flex: 1; height: 9px; border-radius: 2px;
+    background: #e0dbd4;
+  }
+  .mockup-hero-block {
+    height: 70px; background: linear-gradient(135deg, var(--ink) 0%, #2a2a2a 100%);
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    gap: 0.5rem;
+  }
+  .mockup-hero-txt {
+    width: 80px; height: 8px; border-radius: 2px; background: rgba(255,255,255,0.5);
+  }
+  .mockup-hero-btn-mock {
+    width: 40px; height: 16px; border-radius: 2px; background: var(--accent);
+  }
+  .mockup-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;
+  }
+  .mockup-card-block {
+    height: 40px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 3px;
+  }
+  .badge-float {
+    position: absolute; bottom: -18px; right: -18px;
+    background: var(--accent); color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.8rem;
+    padding: 0.7rem 1rem; border-radius: 4px;
+    box-shadow: 4px 4px 0 var(--ink);
+    line-height: 1.3;
+  }
+
+  /* ── PAGE TABS ── */
+  .page-tabs {
+    display: flex; gap: 0;
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 6vw;
+    background: var(--bg);
+    position: sticky; top: var(--nav-h); z-index: 50;
+  }
+  .tab-btn {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 1rem 1.5rem; border: none; background: none;
+    color: var(--muted); cursor: pointer;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -1.5px; transition: color .2s, border-color .2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    color: var(--ink); border-bottom-color: var(--accent);
+  }
+
+  /* ── PAGE SECTIONS ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--ink); color: #fff; }
+  #services .section-label { color: var(--accent); }
+  #services h2 { color: #fff; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px; margin-top: 3.5rem;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 4px; overflow: hidden;
+  }
+  .service-card {
+    background: #141414; padding: 2.5rem 2rem;
+    border-right: 1.5px solid #2a2a2a;
+    transition: background .2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: #1f1f1f; }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1.2rem; display: block;
+  }
+  .service-card h3 {
+    font-size: 1.15rem; font-weight: 700; color: #fff;
+    margin-bottom: 0.7rem;
+  }
+  .service-card p { font-size: 0.88rem; color: #888; line-height: 1.6; }
+  .service-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 0.7rem; color: #333; letter-spacing: 0.1em;
+  }
+
+  /* ── WHY US ── */
+  #why { background: var(--bg); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 3.5rem;
+  }
+  .why-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.8rem;
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: var(--card);
+    transition: box-shadow .2s, transform .2s;
+  }
+  .why-item:hover { box-shadow: 5px 5px 0 var(--ink); transform: translate(-2px,-2px); }
+  .why-icon {
+    width: 48px; height: 48px; border-radius: 3px;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .why-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--bg); padding-top: 0; }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .testi-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 4px; padding: 2rem;
+    position: relative;
+  }
+  .testi-card::before {
+    content: '"'; font-family: 'Syne', sans-serif;
+    font-size: 5rem; font-weight: 800; color: var(--accent);
+    position: absolute; top: -0.5rem; left: 1.5rem;
+    line-height: 1; opacity: 0.15;
+  }
+  .testi-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 1rem; }
+  .testi-text { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+  }
+  .testi-name { font-weight: 600; font-size: 0.88rem; }
+  .testi-role { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--bg); }
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .portfolio-item {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .portfolio-item:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-3px,-3px); }
+  .portfolio-thumb {
+    height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .p-thumb-1 { background: linear-gradient(135deg, #0d0d0d 0%, #1c3fff 100%); }
+  .p-thumb-2 { background: linear-gradient(135deg, #ff4d1c 0%, #ff8c00 100%); }
+  .p-thumb-3 { background: linear-gradient(135deg, #059669 0%, #0d9488 100%); }
+  .p-thumb-4 { background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%); }
+  .portfolio-label {
+    position: absolute; top: 12px; right: 12px;
+    background: rgba(0,0,0,0.6); color: #fff;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 2px;
+  }
+  .portfolio-info { padding: 1.5rem; }
+  .portfolio-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .portfolio-info p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .portfolio-tag {
+    display: inline-block; margin-top: 0.8rem;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent2);
+    background: rgba(28,63,255,0.08); padding: 0.3rem 0.7rem; border-radius: 2px;
+  }
+
+  /* ── CONTACT CTA ── */
+  #contact-cta {
+    background: var(--ink); color: #fff;
+    text-align: center; padding: 80px 6vw;
+  }
+  #contact-cta h2 { color: #fff; margin-bottom: 1rem; }
+  #contact-cta p { color: #888; font-size: 1rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+  #contact-cta .btn-group { justify-content: center; }
+
+  /* ── ABOUT PAGE ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 5rem; align-items: center;
+    padding: 100px 6vw;
+  }
+  .about-photo-block {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 4px; padding: 2.5rem;
+    box-shadow: 8px 8px 0 var(--ink);
+    text-align: center;
+  }
+  .about-avatar {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.5rem;
+    margin: 0 auto 1.2rem;
+    border: 4px solid var(--accent);
+  }
+  .about-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; }
+  .about-title { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+  .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; justify-content: center; }
+  .chip {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 2px;
+    border: 1.5px solid var(--border); color: var(--muted);
+  }
+  .about-content {}
+  .about-content h2 { margin-bottom: 1.5rem; }
+  .about-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
+  .mission-box {
+    border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem;
+    background: var(--card); border-radius: 0 4px 4px 0;
+    margin: 1.8rem 0;
+  }
+  .mission-box strong { font-family: 'Syne', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.5rem; }
+  .mission-box p { margin: 0; color: var(--ink); font-size: 0.92rem; }
+  .focus-list { list-style: none; padding: 0; margin-top: 1.5rem; }
+  .focus-list li {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .focus-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: start;
+    padding: 100px 6vw;
+  }
+  .contact-info h2 { margin-bottom: 1.2rem; }
+  .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+  .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-method {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: var(--card);
+    text-decoration: none; color: var(--ink);
+    transition: box-shadow .2s, transform .2s;
+    font-weight: 500; font-size: 0.9rem;
+  }
+  .contact-method:hover { box-shadow: 4px 4px 0 var(--ink); transform: translate(-2px,-2px); }
+  .cm-icon {
+    width: 44px; height: 44px; border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cm-wa { background: #25d366; }
+  .cm-email { background: var(--accent2); }
+  .cm-phone { background: var(--ink); }
+  .cm-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 0.15rem; }
+  .cm-value { font-size: 0.92rem; font-weight: 600; }
+
+  /* FORM */
+  .contact-form-box {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 4px; padding: 2.5rem;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .contact-form-box h3 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 1.3rem; margin-bottom: 0.5rem;
+  }
+  .contact-form-box .form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+  .form-group { margin-bottom: 1.3rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1.5px solid var(--border); border-radius: 3px;
+    background: var(--bg); color: var(--ink);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    outline: none; transition: border-color .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    width: 100%; padding: 0.95rem;
+    background: var(--accent); color: #fff; border: none;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    letter-spacing: 0.04em; border-radius: 3px; cursor: pointer;
+    transition: background .2s, transform .15s;
+  }
+  .btn-submit:hover { background: #d93a10; transform: translateY(-2px); }
+  .form-success {
+    display: none; text-align: center; padding: 2rem;
+    background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 4px;
+    margin-top: 1rem;
+  }
+  .form-success h4 { color: #166534; font-family: 'Syne', sans-serif; margin-bottom: 0.5rem; }
+  .form-success p { color: #15803d; font-size: 0.88rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a0a0a; color: #888;
+    padding: 3rem 6vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1.5px solid #1f1f1f;
+  }
+  footer .logo { color: #fff; }
+  footer p { font-size: 0.82rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.82rem; color: #555; text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── WA FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    width: 58px; height: 58px;
+    background: #25d366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    animation: pulse-wa 2.5s infinite;
+  }
+  @keyframes pulse-wa {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 35px rgba(37,211,102,0.7); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    #home { grid-template-columns: 1fr; padding-top: calc(var(--nav-h) + 50px); }
+    .hero-visual { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; padding: 60px 5vw; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 70px 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Bharat<span>Bytes</span></div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+    <li><a href="#" onclick="showPage('contact')" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE TABS -->
+<div class="page-tabs">
+  <button class="tab-btn active" onclick="showPage('home')" id="tab-home">Home</button>
+  <button class="tab-btn" onclick="showPage('about')" id="tab-about">About</button>
+  <button class="tab-btn" onclick="showPage('portfolio')" id="tab-portfolio">Portfolio</button>
+  <button class="tab-btn" onclick="showPage('contact')" id="tab-contact">Contact</button>
+</div>
+
+<!-- ═══════════════════════════════ HOME PAGE ═══════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-text">
+      <span class="hero-eyebrow">🇮🇳 Bharat Bytes — Web Studio</span>
+      <h1 class="hero-h1">We Build Websites That <em>Grow</em> Your Business</h1>
+      <p class="hero-sub">Professional, fast, and affordable websites for modern businesses. From concept to launch — we handle everything.</p>
+      <div class="btn-group">
+        <a href="#" onclick="showPage('contact')" class="btn-primary">👉 Get Your Website Now</a>
+        <a href="https://wa.me/916280122757?text=Hi%20Bharat%20Bytes!%20I%20want%20a%20website." class="btn-wa" target="_blank">💬 WhatsApp Us</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">30<span>+</span></div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div>
+          <div class="stat-num">7<span>d</span></div>
+          <div class="stat-label">Avg. Delivery Time</div>
+        </div>
+        <div>
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="mockup-bar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <div class="mockup-browser">
+          <div class="mockup-nav-bar">
+            <div class="mockup-nav-btn"></div>
+            <div class="mockup-nav-btn"></div>
+            <div class="mockup-url-bar"></div>
+          </div>
+          <div class="mockup-hero-block">
+            <div class="mockup-hero-txt"></div>
+            <div class="mockup-hero-btn-mock"></div>
+          </div>
+          <div class="mockup-cards">
+            <div class="mockup-card-block"></div>
+            <div class="mockup-card-block"></div>
+            <div class="mockup-card-block"></div>
+          </div>
+          <div class="mockup-cards">
+            <div class="mockup-card-block" style="grid-column:1/3"></div>
+            <div class="mockup-card-block"></div>
+          </div>
+        </div>
+      </div>
+      <div class="badge-float">⚡ Live in<br>7 Days</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What We Do</div>
+    <h2>Services Built for<br>Real Business Growth</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <span class="service-icon">🎨</span>
+        <h3>Website Design</h3>
+        <p>Stunning, conversion-focused websites tailored to your brand and business goals.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <span class="service-icon">🛒</span>
+        <h3>E-commerce Website</h3>
+        <p>Sell online with a fully functional store — product pages, payments, and more.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <span class="service-icon">🚀</span>
+        <h3>Landing Pages</h3>
+        <p>High-converting landing pages designed to capture leads and drive sales fast.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <span class="service-icon">🔄</span>
+        <h3>Website Redesign</h3>
+        <p>Transform your outdated site into a modern, fast, and SEO-ready powerhouse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why">
+    <div class="section-label">Why Bharat Bytes</div>
+    <h2>Every Reason to<br>Choose Us</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h3>Fast Delivery</h3>
+          <p>Most websites delivered in 5–7 days. No long waits, no delays — we move at the speed of your business.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📱</div>
+        <div>
+          <h3>Mobile Friendly</h3>
+          <p>Every site we build looks perfect on all devices — phones, tablets, and desktops.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h3>Affordable Pricing</h3>
+          <p>Premium quality at honest Indian pricing. No hidden fees, no surprises — just great value.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔍</div>
+        <div>
+          <h3>SEO Ready</h3>
+          <p>Built with SEO best practices so Google can find you and your customers can reach you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-label">Client Love</div>
+    <h2>What Our Clients Say</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Bharat Bytes built our restaurant website in just 5 days. It looks stunning and we're already getting online orders. Absolutely worth every rupee!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rahul Sharma</div>
+            <div class="testi-role">Owner, Spice Garden Restaurant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Our e-commerce store went live within a week and the design is so professional. Sales have increased 40% since launch. Naitik really understands business needs.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <div class="testi-name">Priya Mehta</div>
+            <div class="testi-role">Founder, Desi Crafts Store</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I had an outdated website that was hurting my business. Bharat Bytes redesigned it completely — faster, modern, and SEO-optimized. Highly recommend!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Amit Verma</div>
+            <div class="testi-role">Director, Verma Consultancy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA STRIP -->
+  <section id="contact-cta">
+    <div class="section-label" style="color:#555">Take the Next Step</div>
+    <h2>Ready to Grow Your<br>Business Online?</h2>
+    <p>Let's build something great together. Get a free quote today — no obligations, no pressure.</p>
+    <div class="btn-group">
+      <a href="#" onclick="showPage('contact')" class="btn-primary">👉 Contact Us Today</a>
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Bharat%20Bytes!%20I%20want%20a%20website." class="btn-wa" target="_blank">💬 WhatsApp Now</a>
+    </div>
+  </section>
+
+</div>
+<!-- /HOME PAGE -->
+
+
+<!-- ═══════════════════════════════ ABOUT PAGE ═══════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="about-grid">
+    <div>
+      <div class="about-photo-block">
+        <div class="about-avatar">N</div>
+        <div class="about-name">Naitik Parashar</div>
+        <div class="about-title">Founder & Web Developer — Bharat Bytes</div>
+        <div class="about-chips">
+          <span class="chip">Web Design</span>
+          <span class="chip">E-commerce</span>
+          <span class="chip">SEO</span>
+          <span class="chip">UI/UX</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Building India's Digital Future, One Website at a Time</h2>
+      <p>At Bharat Bytes, we help businesses grow online by building modern, high-performing websites. We believe every business — no matter how small — deserves a powerful online presence.</p>
+
+      <div class="mission-box">
+        <strong>Our Mission</strong>
+        <p>To empower Indian small businesses and entrepreneurs with world-class websites that are affordable, fast, and built to generate real results.</p>
+      </div>
+
+      <p>We specialize in working with small businesses, local shops, startups, and freelancers who want to make a serious impact online without spending a fortune. We understand your challenges because we're from the same world.</p>
+
+      <ul class="focus-list">
+        <li>Helping small businesses compete with the big players online</li>
+        <li>Making professional web design accessible and affordable</li>
+        <li>Delivering websites in days, not weeks</li>
+        <li>Building long-term partnerships, not one-time transactions</li>
+        <li>Ensuring every website is mobile-first and SEO-ready</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- /ABOUT PAGE -->
+
+
+<!-- ═══════════════════════════════ PORTFOLIO PAGE ═══════════════════════════════ -->
+<div class="page" id="page-portfolio">
+  <section id="portfolio">
+    <div class="section-label">Our Work</div>
+    <h2>Projects We're Proud Of</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-thumb p-thumb-1">
+          <span>🍽️</span>
+          <span class="portfolio-label">Restaurant</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Spice Garden — Restaurant Website</h3>
+          <p>A full-featured restaurant website with online menu, table booking, and contact form. Designed to bring in local diners and boost walk-ins.</p>
+          <span class="portfolio-tag">Website Design</span>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-thumb p-thumb-2">
+          <span>🛍️</span>
+          <span class="portfolio-label">E-commerce</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Desi Crafts — Online Store</h3>
+          <p>A complete e-commerce store for handmade Indian crafts — product catalog, cart, payments, and order tracking all in one place.</p>
+          <span class="portfolio-tag">E-commerce</span>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-thumb p-thumb-3">
+          <span>💼</span>
+          <span class="portfolio-label">Business</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>Verma Consultancy — Corporate Site</h3>
+          <p>A professional corporate website redesign for a Delhi-based consultancy. Modern layout, fast loading, and SEO-optimized from day one.</p>
+          <span class="portfolio-tag">Redesign</span>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-thumb p-thumb-4">
+          <span>🎯</span>
+          <span class="portfolio-label">Landing Page</span>
+        </div>
+        <div class="portfolio-info">
+          <h3>LaunchKit — Product Landing Page</h3>
+          <p>A high-converting landing page for a SaaS product launch. Built for speed and conversions — clean copy, strong CTA, and mobile-first design.</p>
+          <span class="portfolio-tag">Landing Page</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- /PORTFOLIO PAGE -->
+
+
+<!-- ═══════════════════════════════ CONTACT PAGE ═══════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-label">Let's Talk</div>
+      <h2>Get a Free Quote Today</h2>
+      <p>Have a project in mind? Tell us what you need and we'll get back to you within a few hours. No obligations — just honest advice.</p>
+      <div class="contact-methods">
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Bharat%20Bytes!%20I%20want%20a%20website." class="contact-method" target="_blank">
+          <div class="cm-icon cm-wa">💬</div>
+          <div>
+            <span class="cm-label">WhatsApp (Fastest)</span>
+            <span class="cm-value">+916280122757</span>
+          </div>
+        </a>
+        <a href="mailto:hello@bharatbytes.in" class="contact-method">
+          <div class="cm-icon cm-email" style="color:#fff;font-size:1.1rem;">✉️</div>
+          <div>
+            <span class="cm-label">Email</span>
+            <span class="cm-value">hello@bharatbytes.in</span>
+          </div>
+        </a>
+        <a href="tel:+91XXXXXXXXXX" class="contact-method">
+          <div class="cm-icon cm-phone" style="color:#fff;font-size:1.1rem;">📞</div>
+          <div>
+            <span class="cm-label">Call Us</span>
+            <span class="cm-value">+91 XXXX-XXXXXX</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-box">
+      <h3>Send Us a Message</h3>
+      <p class="form-sub">Fill in the details and we'll reply within a few hours.</p>
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="f-name" placeholder="Rahul Sharma" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="f-phone" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="rahul@example.com" />
+        </div>
+        <div class="form-group">
+          <label>What do you need? *</label>
+          <select id="f-service">
+            <option value="">— Select a service —</option>
+            <option>Website Design</option>
+            <option>E-commerce Website</option>
+            <option>Landing Page</option>
+            <option>Website Redesign</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Requirement</label>
+          <textarea id="f-req" placeholder="Tell us about your business and what you're looking for..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">🚀 Send Message & Get Quote</button>
+      </div>
+      <div class="form-success" id="form-success">
+        <h4>✅ Message Sent!</h4>
+        <p>Thanks! We'll reach out within a few hours. You can also WhatsApp us for a faster reply.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /CONTACT PAGE -->
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Bharat<span>Bytes</span></div>
+  <p>© 2025 Bharat Bytes. Built with ❤️ in India.</p>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('portfolio')">Work</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/916280122757?text=Hi%20Bharat%20Bytes!%20I%20want%20a%20website." class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const service = document.getElementById('f-service').value;
+    if (!name || !phone) {
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+    // Build WhatsApp message
+    const req = document.getElementById('f-req').value.trim();
+    const msg = encodeURIComponent(
+      `Hi Bharat Bytes! 👋\n\nName: ${name}\nPhone: ${phone}\nService: ${service || 'Not specified'}\nRequirement: ${req || 'Not specified'}`
+    );
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    // Open WhatsApp after short delay
+    setTimeout(() => {
+      window.open(`https://wa.me/91XXXXXXXXXX?text=${msg}`, '_blank');
+    }, 800);
+  }
+</script>
+</body>
+</html>
